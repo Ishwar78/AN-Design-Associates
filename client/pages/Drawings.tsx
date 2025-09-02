@@ -3,6 +3,10 @@ import { getPublicDrawings } from "@/lib/store";
 import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Carousel, { Slide } from "@/components/Carousel";
+import GalleryGrid from "@/components/GalleryGrid";
+import FullBleedImage from "@/components/FullBleedImage";
+import FourUp from "@/components/FourUp";
+import { ATTACHMENTS, ADDITIONAL_STOCK, USER_FEATURE } from "@/lib/attachments";
 
 
 import { useState, useEffect } from "react";
@@ -106,8 +110,18 @@ export default function Drawings() {
         </div>
       </section>
 
+      {/* Full image */}
+      <FullBleedImage src={USER_FEATURE} alt="Feature" />
+      <section className="-mt-2 mx-auto max-w-7xl px-4">
+        <FourUp images={[ATTACHMENTS[2], ATTACHMENTS[4], ATTACHMENTS[7], ATTACHMENTS[10]]} />
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 py-12">
-        <p className="text-neutral-700 max-w-2xl">
+        <h2 className="heading-gradient text-2xl sm:text-3xl font-extrabold">Sample Drawings</h2>
+        <div className="mt-6">
+          <GalleryGrid images={[...ATTACHMENTS.slice(0, 10)].map((src) => ({ src }))} />
+        </div>
+        <p className="text-neutral-700 max-w-2xl mt-10">
           Browse architectural and MEP/interior drawings. Open to preview, or
           download directly.
         </p>

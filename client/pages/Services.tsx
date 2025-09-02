@@ -46,6 +46,10 @@ const SERVICES = [
 ];
 
 import Carousel, { Slide } from "@/components/Carousel";
+import GalleryGrid from "@/components/GalleryGrid";
+import FullBleedImage from "@/components/FullBleedImage";
+import FourUp from "@/components/FourUp";
+import { ATTACHMENTS, ADDITIONAL_STOCK, USER_FEATURE } from "@/lib/attachments";
 
 
 import { useState, useEffect } from "react";
@@ -123,7 +127,21 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services grid slider */}
+      {/* Attachments gallery */}
+      <section className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="heading-gradient text-2xl sm:text-3xl font-extrabold">Work Examples</h2>
+        <div className="mt-6">
+          <GalleryGrid images={[...ATTACHMENTS.slice(4, 12), ...ADDITIONAL_STOCK.slice(0, 3)].map((src) => ({ src }))} />
+        </div>
+      </section>
+
+     
+      <FullBleedImage src={USER_FEATURE} alt="Feature" />
+      <section className="-mt-2 mx-auto max-w-7xl px-4">
+        <FourUp images={[ATTACHMENTS[8], ATTACHMENTS[9], ATTACHMENTS[10], ATTACHMENTS[11]]} />
+      </section>
+
+    
       <section className="mx-auto max-w-7xl px-4 py-12">
         <Carousel>
           {SERVICES.map(({ title, desc, icon: Icon }) => (
@@ -143,7 +161,7 @@ export default function Services() {
       </section>
 
       {/* Process timeline slider */}
-      <section className="mx-auto max-w-7xl px-4 pb-12">
+      {/* <section className="mx-auto max-w-7xl px-4 pb-12">
         <h2 className="heading-gradient text-2xl sm:text-3xl font-extrabold">
           Process
         </h2>
@@ -164,7 +182,7 @@ export default function Services() {
             ),
           )}
         </Carousel>
-      </section>
+      </section> */}
 
       {/* CTA banner */}
       <section className="bg-primary text-primary-foreground">

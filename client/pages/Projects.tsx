@@ -11,6 +11,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Carousel, { Slide } from "@/components/Carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
+import GalleryGrid from "@/components/GalleryGrid";
+import FullBleedImage from "@/components/FullBleedImage";
+import FourUp from "@/components/FourUp";
+import { ATTACHMENTS, ADDITIONAL_STOCK, USER_FEATURE } from "@/lib/attachments";
 
 
 
@@ -117,6 +121,20 @@ const [current, setCurrent] = useState(0);
             </Carousel>
           </div>
         </div>
+      </section>
+
+      {/* Static gallery from attachments */}
+      <section className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="heading-gradient text-2xl sm:text-3xl font-extrabold">Design Sheets & Elevations</h2>
+        <div className="mt-6">
+          <GalleryGrid images={[...ATTACHMENTS, ...ADDITIONAL_STOCK.slice(0, 4)].map((src) => ({ src }))} />
+        </div>
+      </section>
+
+      {/* Full image */}
+      <FullBleedImage src={USER_FEATURE} alt="Feature" />
+      <section className="-mt-2 mx-auto max-w-7xl px-4">
+        <FourUp images={[ATTACHMENTS[0], ATTACHMENTS[3], ATTACHMENTS[6], ATTACHMENTS[9]]} />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12">

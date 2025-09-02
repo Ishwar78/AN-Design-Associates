@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { ShieldCheck, Clock, Ruler } from "lucide-react";
 import Carousel, { Slide } from "@/components/Carousel";
+import GalleryGrid from "@/components/GalleryGrid";
+import FullBleedImage from "@/components/FullBleedImage";
+import FourUp from "@/components/FourUp";
+import { ATTACHMENTS, ADDITIONAL_STOCK, USER_FEATURE } from "@/lib/attachments";
 
 import { useState, useEffect } from "react";
 // About.tsx (sirf naya section)
@@ -124,7 +128,23 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team/Values slider */}
+      {/* Attachments gallery */}
+      <section className="mt-12">
+        <h2 className="heading-gradient text-2xl font-extrabold">Our Work Snapshots</h2>
+        <div className="mt-6">
+          <GalleryGrid
+            images={[...ATTACHMENTS.slice(0, 6), ...ADDITIONAL_STOCK.slice(0, 2)].map((src) => ({ src }))}
+          />
+        </div>
+      </section>
+
+     
+      <FullBleedImage src={USER_FEATURE} alt="Feature" />
+      <section className="-mt-2 mx-auto max-w-7xl px-4">
+        <FourUp images={[ATTACHMENTS[4], ATTACHMENTS[5], ATTACHMENTS[6], ATTACHMENTS[7]]} />
+      </section>
+
+      
       <section className="mt-12">
         <h2 className="heading-gradient text-2xl font-extrabold">
           Team & Values
@@ -158,7 +178,6 @@ export default function About() {
         <div className="mt-6">
           <Carousel>
             {[
-              "https://cdn.builder.io/api/v1/image/assets%2Fe9a77209c0ab4c10a9cc4ef22c9de513%2F18a43c88d1fa46f1842980425be7369c?format=webp&width=800",
               "https://cdn.builder.io/api/v1/image/assets%2Fe9a77209c0ab4c10a9cc4ef22c9de513%2F841074a8b7b848f1bf883bc3adb05a5d?format=webp&width=1200",
               "https://cdn.builder.io/api/v1/image/assets%2Fe9a77209c0ab4c10a9cc4ef22c9de513%2Fee9dc9332cbd4c1b8432291046af7440?format=webp&width=1200",
             ].map((src, i) => (

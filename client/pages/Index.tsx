@@ -4,6 +4,10 @@ import Marquee from "@/components/Marquee";
 import ProjectsSlider from "@/components/ProjectsSlider";
 import Carousel, { Slide } from "@/components/Carousel";
 import { CheckCircle, Building2, HandCoins, ShieldCheck } from "lucide-react";
+import GalleryGrid from "@/components/GalleryGrid";
+import FullBleedImage from "@/components/FullBleedImage";
+import FourUp from "@/components/FourUp";
+import { ATTACHMENTS, ADDITIONAL_STOCK, USER_FEATURE } from "@/lib/attachments";
 
 const STAT_ITEMS = [
   { label: "Years of Experience", value: 12 },
@@ -107,6 +111,25 @@ export default function Index() {
         <div className="mt-6">
           <ProjectsSlider />
         </div>
+      </section>
+
+      {/* Attachments gallery */}
+      {/* <section className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="heading-gradient text-2xl sm:text-3xl font-extrabold">
+          Recent Work Previews
+        </h2>
+        <p className="mt-2 text-neutral-700">A mix of plans, elevations and interiors.</p>
+        <div className="mt-6">
+          <GalleryGrid
+            images={[...ATTACHMENTS.slice(0, 8), ...ADDITIONAL_STOCK.slice(0, 4)].map((src) => ({ src }))}
+          />
+        </div>
+      </section> */}
+
+      {/* Full image */}
+      <FullBleedImage src={USER_FEATURE} alt="Featured image" />
+      <section className="mx-auto max-w-7xl px-4">
+        <FourUp images={[ATTACHMENTS[0], ATTACHMENTS[1], ATTACHMENTS[2], ATTACHMENTS[3]]} />
       </section>
 
       {/* Quick counters */}
